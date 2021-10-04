@@ -4,7 +4,9 @@
 
 ### Andrea Powell, Anthony Morton, Bryce Pfingston, David Hecker
 
-### Link to Trello Board - https://trello.com/b/uU69ZgMv/pcwatch
+### [] - https://trello.com/b/uU69ZgMv/pcwatch
+
+### 
 
 ### Wireframe
 ![favorites](src/images/favorites.jpeg)
