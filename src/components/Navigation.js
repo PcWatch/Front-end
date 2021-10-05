@@ -15,11 +15,11 @@ class Navigation extends React.Component {
         <Navbar.Brand>TITLE HERE (WIP)</Navbar.Brand>
           <Nav className="me-auto">
             <Nav.Link as={Link} href="/" to="/" >Home</Nav.Link>
-            <Nav.Link as={Link} href="/Favorites" to="/Favorites">Favorties</Nav.Link>
-            <Nav.Link as={Link} href="/Shopping" to="/Shopping">Shopping List</Nav.Link>
+            <Nav.Link as={Link} href="/Favorites" to="/Favorites" onClick={() => this.forceUpdate()}>Favorties</Nav.Link>
+            <Nav.Link as={Link} href="/Shopping" to="/Shopping" onClock={() => this.forceUpdate()}>Shopping List</Nav.Link>
             <Form inline>
               <FormControl type="text" placeholder="Search Here" className="mr-sm-2" />
-              <Button variant="success">Search Now!</Button>
+              <Button variant="success">🔍</Button>
             </Form>
           </Nav>
         </Container>

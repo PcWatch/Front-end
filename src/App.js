@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import {withAuth0} from '@auth0/auth0-react';
 import Main from './components/Main'
 import Login from './components/Login';
-import Favorites from './components/Favorites'
+// import Favorites from './components/Favorites'
 import Navigation from "./components/Navigation";
 
 class App extends React.Component {
