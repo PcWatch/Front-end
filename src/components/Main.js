@@ -45,7 +45,7 @@ class Main extends Component {
     return (
       <>
 
-       <Favorites show={this.state.favorite}/>       
+       {/* <Favorites show={this.state.favorite}/>        */}
        <Search searchQuery={this.state.searchQuery} getSearchQuery={this.getSearchQuery} getRecipes={this.getRecipes}/>
        <Recipecard handleModal={this.handleModal}/>
        <RecipeModal show={this.state.showRecipeModal} handleModal={this.handleModal}/>
