@@ -28,10 +28,10 @@ class Recipecard extends Component {
           </Card>
           </Modal.Body>
           <Modal.Footer>
-            <Button variant="Danger" onClick={this.props.handleModal}>
+            {/* <Button variant="Danger" onClick={this.props.handleModal}>
               Close
-            </Button>
-            <Button variant="Success">
+            </Button> */}
+            <Button variant="Success" onClick={() => this.props.addFavorite(this.props.recipe.id)}>
               Add to Favorites
             </Button>
           </Modal.Footer>
