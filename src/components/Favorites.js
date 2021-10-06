@@ -6,10 +6,29 @@ import Card from "react-bootstrap/Card";
 import Button from 'react-bootstrap/Button'
 
 export default class Favorites extends Component {
-  constructor(props) {
-    super(props);
-    ;
-  }
+  // async componentDidMount() {
+  //   if (this.props.auth0.isAuthenticated) {
+  //     const res = await this.props.auth0.getIdTokenClaims();
+
+  //     const jwt = res.__raw;
+
+  //     const config = {
+  //       headers: { Authorization: `Bearer ${jwt}` },
+  //       method: "get",
+  //       baseURL: process.env.REACT_APP_SERVER,
+  //       url: "/recipe",
+  //     };
+
+  //     const recipeResponse = await axios(config);
+  //     // this.setState({ recipe: recipeResponse.data });
+  //     this.setState({ user: this.props.auth0.user });
+  //     console.log("USERAuth0:", this.props.auth0.user);
+  //   }
+  // }
+  // constructor(props) {
+  //   super(props);
+  //   ;
+  // }
 
   
   // removeFavorite = (id) => {
@@ -22,7 +41,7 @@ export default class Favorites extends Component {
   
   render() {
     //const favorites = this.props.favorites;
-    return (
+    // return (
     // favorites.forEach( recipe => {
     //   return (
     //     <Card key={recipe.id} style={{ width: "18rem" }}>
@@ -45,7 +64,23 @@ export default class Favorites extends Component {
     // })
 
     // );
+    return(
+    //     favorites.forEach( recipe => {
+    //       <Card style={{ width: "18rem" }}>
+    //       <Card.Img variant="top"src={this.props.selectedRecipe.image} />
+    //       <Card.Body>
+    //         <Card.Title>Directions</Card.Title>
+    //         <Card.Text>{this.props.selectedRecipe.recipe}</Card.Text>
+    //         {/* <Card.Text>{this.props.ingredients.map( ingredient => ())}</Card.Text> */}
+    //         <Card.Title>Ingredients</Card.Title>
+    //         {/* <Card.Text>{this.props.selectedRecipe.ingredients.map( (ingredient) => <Card.Text>`${ingredient}`</Card.Text>)}</Card.Text> */}
+    //       </Card.Body>
+    //     </Card>
+    //     })
+    // );
+    // )
+  //}
     <h1>favorites</h1>
     )
-  }
+}
 }
