@@ -1,11 +1,6 @@
 import { Component } from "react";
 import Card from "react-bootstrap/Card";
 import Modal from "react-bootstrap/Modal";
-// import IconButton from "material-components-web/IconButton";
-// import React, { useState } from 'react';
-// import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
-// import FavoriteIcon from '@material-ui/icons/Favorite';
-// import Favorite from "@material-ui/icons/Favorite";
 
 class RecipeModal extends Component {
   getRecipes = async () => {};
@@ -29,34 +24,13 @@ class RecipeModal extends Component {
                 <Card.Text>{this.props.selectedRecipe.recipe}</Card.Text>
                 {/* <Card.Text>{this.props.ingredients.map( ingredient => ())}</Card.Text> */}
                 <Card.Title>Ingredients</Card.Title>
-                {/* <Card.Text>{this.props.selectedRecipe.ingredients.map( (ingredient) => <Card.Text>`${ingredient}`</Card.Text>)}</Card.Text> */}
+                {/* {this.props.selectedRecipe.ingredients.map( (ingredient) => 
+                <Card.Text>`${ingredient}`</Card.Text>)} */}
               </Card.Body>
             </Card>
           </Modal.Body>
           <Modal.Footer onClick={()=>this.handleClick()}>
             Add to Favorites
-            {/* {this.props.favorite && (
-              <IconButton
-                onClick={() => {
-                  );
-                }}
-                aria-label="delete"
-                color="primary"
-              >
-                <FavoriteBorderIcon></FavoriteBorderIcon>
-              </IconButton>
-            )}
-            {!this.props.favorite && (
-              <IconButton
-                onClick={() => {
-                  setFav(!fav);
-                }}
-                aria-label="delete"
-                color="primary"
-              >
-                <Favorite></Favorite>
-              </IconButton>
-            )} */}
           </Modal.Footer>
         </Modal>
       </>
