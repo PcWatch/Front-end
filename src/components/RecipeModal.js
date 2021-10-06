@@ -1,43 +1,69 @@
-import {Component} from "react";
-import Card from 'react-bootstrap/Card'
-import Modal from 'react-bootstrap/Modal'
-import Button from 'react-bootstrap/Button'
+import { Component } from "react";
+import Card from "react-bootstrap/Card";
+import Modal from "react-bootstrap/Modal";
+// import IconButton from "material-components-web/IconButton";
+// import React, { useState } from 'react';
+// import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
+// import FavoriteIcon from '@material-ui/icons/Favorite';
+// import Favorite from "@material-ui/icons/Favorite";
 
-class Recipecard extends Component {
-  getRecipes = async () => {
-    
-  }
+class RecipeModal extends Component {
+  getRecipes = async () => {};
 
   render() {
     return (
       <>
         <Modal show={this.props.show} onHide={this.props.handleModal}>
           <Modal.Header closeButton>
-            <Modal.Title>Modal heading</Modal.Title>
+            <Modal.Title>{this.props.selectedRecipe.title}</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-          <Card style={{ width: '18rem' }}>
-            <Card.Img variant="top" src="https://spoonacular.com/recipeImages/{ID}-{SIZE}.{TYPE}" />
-            <Card.Body>
-              <Card.Title>Card Title</Card.Title>
-              <Card.Text>
-                Some quick example text to build on the card title and make up the bulk of
-                the card's content.
-              </Card.Text>
-            </Card.Body>
-          </Card>
+            <Card style={{ width: "18rem" }}>
+              <Card.Img variant="top"src={this.props.selectedRecipe.image} />
+              <Card.Body>
+                <Card.Title>Directions</Card.Title>
+                <Card.Text>{this.props.selectedRecipe.recipe}</Card.Text>
+                {/* <Card.Text>{this.props.ingredients.map( ingredient => ())}</Card.Text> */}
+                <Card.Title>Ingredients</Card.Title>
+                <Card.Text>{this.props.selectedRecipe.ingredients.map( (ingredient) => <Card.Text>`${ingredient}`</Card.Text>)}</Card.Text>
+              </Card.Body>
+            </Card>
           </Modal.Body>
           <Modal.Footer>
-            {/* <Button variant="Danger" onClick={this.props.handleModal}>
-              Close
-            </Button> */}
-            <Button variant="Success" onClick={() => this.props.addFavorite(this.props.recipe.id)}>
-              Add to Favorites
-            </Button>
+            {/* {this.props.favorite && (
+              <IconButton
+                onClick={() => {
+                  );
+                }}
+                aria-label="delete"
+                color="primary"
+              >
+                <FavoriteBorderIcon></FavoriteBorderIcon>
+              </IconButton>
+            )}
+            {!this.props.favorite && (
+              <IconButton
+                onClick={() => {
+                  setFav(!fav);
+                }}
+                aria-label="delete"
+                color="primary"
+              >
+                <Favorite></Favorite>
+              </IconButton>
+            )} */}
           </Modal.Footer>
         </Modal>
       </>
     );
   }
 }
-export default Recipecard;
+
+
+
+
+// constructor(props){
+//   super(props);
+//   console.log()
+// }
+export default RecipeModal;
