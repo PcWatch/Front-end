@@ -10,7 +10,7 @@ class Main extends Component {
       <>
         <Search searchQuery={this.props.searchQuery} getSearchQuery={this.props.getSearchQuery} getRecipes={this.props.getRecipes}/>
         <Recipecard handleModal={this.props.handleModal} recipe={this.props.recipe} getRecipeId={this.props.getRecipeId} getfullRecipes={this.props.getfullRecipes} handleOpen={this.props.openModel} />
-        <RecipeModal show={this.props.show} handleModal={this.props.handleModal} selectedRecipe={this.props.fullRecipe}/>
+        <RecipeModal show={this.props.show} handleModal={this.props.handleModal} saveFavoriteToDB={this.props.saveFavoriteToDB} selectedRecipe={this.props.fullRecipe}/>
       </>
     );
   }

@@ -10,10 +10,14 @@ import Modal from "react-bootstrap/Modal";
 class RecipeModal extends Component {
   getRecipes = async () => {};
 
+  handleClick = () => {
+    this.props.saveFavoriteToDB(this.props.selectedRecipe.id)
+  }
+
   render() {
     return (
       <>
-        <Modal show={this.props.show} onHide={this.props.handleModal}>
+        <Modal key={this.props.selectedRecipe.id} show={this.props.show} onHide={this.props.handleModal}>
           <Modal.Header closeButton>
             <Modal.Title>{this.props.selectedRecipe.title}</Modal.Title>
           </Modal.Header>
@@ -25,11 +29,12 @@ class RecipeModal extends Component {
                 <Card.Text>{this.props.selectedRecipe.recipe}</Card.Text>
                 {/* <Card.Text>{this.props.ingredients.map( ingredient => ())}</Card.Text> */}
                 <Card.Title>Ingredients</Card.Title>
-                <Card.Text>{this.props.selectedRecipe.ingredients.map( (ingredient) => <Card.Text>`${ingredient}`</Card.Text>)}</Card.Text>
+                {/* <Card.Text>{this.props.selectedRecipe.ingredients.map( (ingredient) => <Card.Text>`${ingredient}`</Card.Text>)}</Card.Text> */}
               </Card.Body>
             </Card>
           </Modal.Body>
-          <Modal.Footer>
+          <Modal.Footer onClick={()=>this.handleClick()}>
+            Add to Favorites
             {/* {this.props.favorite && (
               <IconButton
                 onClick={() => {

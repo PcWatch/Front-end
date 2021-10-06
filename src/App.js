@@ -13,7 +13,6 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: null,
       showRecipeModal: false,
       searchQuery: "",
       favorites: [],
@@ -42,9 +41,6 @@ class App extends React.Component {
     this.setState({
       showRecipeModal: false,
     });
-    console.log("modal is being called");
-    console.log(this.state.showRecipeModal);
-    console.log(this.state.recipeId);
   };
 
   getRecipes = async (event) => {
@@ -73,20 +69,21 @@ class App extends React.Component {
     console.log("get search query is working");
   };
 
-  addFavorite = (favorite) => {
-    const { favorites } = this.state;
-    if (
-      !favorites.some((alreadyFavorite) => alreadyFavorite.id === favorite.id)
-    ) {
-      this.setState({
-        favorites: [...this.state.favorites, favorite],
-      });
-    }
-  };
+  // addFavorite = (favorite) => {
+  //   const { favorites } = this.state;
+  //   if (
+  //     !favorites.some((alreadyFavorite) => alreadyFavorite.id === favorite.id)
+  //   ) {
+  //     this.setState({
+  //       favorites: [...this.state.favorites, favorite],
+  //     });
+  //   }
+  // };
 
   saveFavoriteToDB = async (id) => {
+    console.log(this.props.auth0.user.email)
     // this takes a recipe ID and (i guess optional) user email and saves the full recipe to the DB
-    const postURL = `${process.env.REACT_APP_SERVER}/favorite/${id}?email=${this.props.Auth0.user.email}`;
+    const postURL = `${process.env.REACT_APP_SERVER}/favorite/${id}?email=${this.props.auth0.user.email}`;
     await axios.post(postURL);
     console.log("item saved to favorites");
   };
@@ -110,6 +107,7 @@ class App extends React.Component {
   };
 
   render() {
+    console.log(this.props.auth0)
     return (
       <>
         <Router>
@@ -129,6 +127,7 @@ class App extends React.Component {
                     fullRecipe={this.state.fullRecipe}
                     getRecipeId={this.getRecipeId}
                     getfullRecipes={this.getfullRecipes}
+                    saveFavoriteToDB={this.saveFavoriteToDB}
                   />
                 </>
               ) : (
@@ -137,7 +136,7 @@ class App extends React.Component {
             </Route>
             <Navigation />
             <Route path="/Favorties">
-              <Favorites Favorite={this.state.Favorites} />
+              <Favorites getFavoritesFromDB={this.getFavoritesFromDB} deleteFavoriteFromDB={this.deleteFavoriteFromDB} saveFavoriteToDB={this.saveFavoriteToDB}/>
             </Route>
           </Switch>
         </Router>
