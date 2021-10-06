@@ -54,3 +54,20 @@
   margin-right: 0;
   margin-left: auto;
 }
+.favoriteRecipe {
+  display: flex;
+  flex-direction: row;
+
+}
+.card-img-top {
+  width: 23rem;
+}
+.favoriteDelete {
+  width: 100px;
+  height: 40px;
+  margin-right: 10px;
+  margin-bottom: 0;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}

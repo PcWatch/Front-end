@@ -16,7 +16,6 @@ class App extends React.Component {
       showRecipeModal: false,
       searchQuery: "",
       favorites: [],
-      setFavorites: [],
       recipe: [],
       fullRecipe: [],
       recipeId: null,
@@ -56,7 +55,6 @@ class App extends React.Component {
     // event.preventDefault();
     let recipeURL = `${process.env.REACT_APP_SERVER}/recipe/${id}`;
     const recipeResponse = await axios.get(recipeURL);
-    console.log(recipeResponse.data);
     this.setState({
       fullRecipe: recipeResponse.data,
     });
@@ -66,23 +64,10 @@ class App extends React.Component {
     this.setState({
       searchQuery: userSearchQuery,
     });
-    console.log("get search query is working");
   };
 
-  // addFavorite = (favorite) => {
-  //   const { favorites } = this.state;
-  //   if (
-  //     !favorites.some((alreadyFavorite) => alreadyFavorite.id === favorite.id)
-  //   ) {
-  //     this.setState({
-  //       favorites: [...this.state.favorites, favorite],
-  //     });
-  //   }
-  // };
-
   saveFavoriteToDB = async (id) => {
-    console.log(this.props.auth0.user.email)
-    // this takes a recipe ID and (i guess optional) user email and saves the full recipe to the DB
+    // this takes a recipe ID and user email and saves the full recipe to the DB
     const postURL = `${process.env.REACT_APP_SERVER}/favorite/${id}?email=${this.props.auth0.user.email}`;
     await axios.post(postURL);
     console.log("item saved to favorites");
@@ -101,13 +86,12 @@ class App extends React.Component {
 
   deleteFavoriteFromDB = async (id) => {
     // this deletes a fav from the DB by id
-    const deleteURL = `${process.env.REACT_APP_SERVER}/favorite/${id}`;
+    const deleteURL = `${process.env.REACT_APP_SERVER}/recipe/${id}`;
     await axios.delete(deleteURL);
     console.log("item with ID: ", id, " was deleted");
   };
 
   render() {
-    console.log(this.props.auth0)
     return (
       <>
         <Router>
@@ -134,9 +118,9 @@ class App extends React.Component {
                 <Login />
               )}
             </Route>
+            <Route path="/Favorites">
             <Navigation />
-            <Route path="/Favorties">
-              <Favorites getFavoritesFromDB={this.getFavoritesFromDB} deleteFavoriteFromDB={this.deleteFavoriteFromDB} saveFavoriteToDB={this.saveFavoriteToDB}/>
+              <Favorites getFavoritesFromDB={this.getFavoritesFromDB} deleteFavoriteFromDB={this.deleteFavoriteFromDB} saveFavoriteToDB={this.saveFavoriteToDB} favoritesData={this.state.favoritesData}/>
             </Route>
           </Switch>
         </Router>
