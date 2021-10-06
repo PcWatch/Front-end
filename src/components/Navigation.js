@@ -5,12 +5,14 @@ import { withAuth0 } from '@auth0/auth0-react';
 import { Navbar, Nav, Form, FormControl, Button } from 'react-bootstrap'
 import { Link } from "react-router-dom";
 import Container from 'react-bootstrap/Container';
+import '../nav.css';
 
 
 class Navigation extends React.Component {
   render() {
     return (
       <>
+
         <Navbar bg="dark" variant="dark" className="navStuff">
           <Container>
           <Navbar.Brand>TITLE HERE (WIP)</Navbar.Brand>
