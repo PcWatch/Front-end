@@ -1,6 +1,5 @@
 import React from "react";
 import { FormControl, Button, Form } from "react-bootstrap";
-import RecipeCard from "./RecipeCard"
 
 class Search extends React.Component {
   searchEvent = (event) => {
