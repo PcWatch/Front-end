@@ -11,7 +11,7 @@ class Search extends React.Component {
     return (
       <>
         <Form onSubmit={this.props.getRecipes} className="searchForm">
-          <FormControl onChange={this.searchEvent} type="text" placeholder="What food would you like to search?" className="primarySearch" />
+          <FormControl onChange={this.searchEvent} type="text" placeholder="Enter an ingredient" className="primarySearch" />
           <Button onClick={this.props.getRecipes} className="searchButton" variant="success">Search Now!</Button>
         </Form>
       </>

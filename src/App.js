@@ -66,6 +66,7 @@ class App extends React.Component {
     // event.preventDefault();
     let recipeURL = `${process.env.REACT_APP_SERVER}/recipe/${id}`;
     const recipeResponse = await axios.get(recipeURL);
+    console.log(recipeResponse.data)
     this.setState({
       fullRecipe: recipeResponse.data,
     });

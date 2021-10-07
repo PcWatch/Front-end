@@ -14,7 +14,7 @@ class RecipeModal extends Component {
 
   render() {
     
-    // console.log(this.props.selectedRecipe)
+    console.log(this.props.selectedRecipe.ingredients)
     // console.log(this.props.favoritesData)
     return (
       <>
@@ -25,20 +25,23 @@ class RecipeModal extends Component {
             <Modal.Title>{this.props.selectedRecipe.title}</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <Card className="modal-card">
-              <Card.Img id="modal-image" style={{ width: "20rem" }} variant="top"src={this.props.selectedRecipe.image} />
-                <div id="modal-ingredients">
-                <Card.Title>Ingredients</Card.Title>
-                {/* {this.props.selectedRecipe.ingredients.map( (recipeData) =>
-                      <Card.Text>recipeData</Card.Text>
-                )} */}
-                <Card.Text>{this.props.selectedRecipe.ingredients}</Card.Text>
-                </div>
-                <div>
-                <Card.Title>Directions</Card.Title>
-                <Card.Text>{this.props.selectedRecipe.recipe}</Card.Text>
-                </div>
-            </Card>
+            <div id="modal-recipe">
+              <img id="modal-image" style={{ width: "20rem" }} variant="top"src={this.props.selectedRecipe.image} />
+              <div>
+                <div id="modal-ingredients-title">Ingredients</div>
+                <div id="modal-ingredients">{this.props.selectedRecipe.ingredients}</div>
+                {/* {this.props.selectedRecipe.ingredients.map(element => {
+                  <div>{element}</div>
+                })} */}
+                {/* <Ingredient selectedRecipe={this.props.selectedRecipe}/> */}
+              </div>
+            </div>
+            <div>
+              <div>
+                <div id="modal-directions-title">Directions</div>
+                <div id="modal-directions">{this.props.selectedRecipe.recipe}</div>
+              </div>
+            </div>
           </Modal.Body>
           <Modal.Footer>
             {this.props.isFavorited ? 
@@ -54,3 +57,20 @@ class RecipeModal extends Component {
 }
 
 export default RecipeModal;
+
+// class Ingredient extends Component {
+
+//   render() {
+//     console.log(this.props.selectedRecipe)
+
+//     return (
+//       <>
+//         {this.props.selectedRecipe.ingredients.map(element => {
+//           <div>{element}</div>
+//      
+// 
+//         })}
+//       </>
+//     );
+//   }
+// }
