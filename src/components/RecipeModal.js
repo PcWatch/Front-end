@@ -31,7 +31,7 @@ class RecipeModal extends Component {
                 <div id="modal-ingredients-title">Ingredients</div>
                 <div id="modal-ingredients">{this.props.selectedRecipe.ingredients}</div>
                 {/* {this.props.selectedRecipe.ingredients.map(element => {
-                  <div>{element}</div>
+                  return <div>{element}</div>
                 })} */}
                 {/* <Ingredient selectedRecipe={this.props.selectedRecipe}/> */}
               </div>
@@ -67,7 +67,9 @@ export default RecipeModal;
 //       <>
 //         {this.props.selectedRecipe.ingredients.map(element => {
 //           <div>{element}</div>
-//      
+//      this.props.selectedRecipe.ingredients.map((ingredient) => {
+//        return <div>{}</div>
+//    })
 // 
 //         })}
 //       </>
