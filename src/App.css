@@ -77,6 +77,7 @@
   margin-top: 20px;
   margin-right: 20px;
   cursor: pointer;
+  background-color: #6c584c
 }
 .recipe-card-image {
   padding-top: 10px;
@@ -106,25 +107,37 @@
   text-align: center;
 }
 .modal-card{
-  background-color: #ededed;
+  background-color: #dde5b6;
 }
 .modal-header{
-  background-color: #11296b;
+  background-color: #6c584c;
 }
 .modal-footer{
-  background-color: #11296b;
+  background-color: #6c584c;
 }
 .modal-body{
-  background-color: #ffdb57;
+  background-color: #adc178;
 }
 #favorite{
   cursor: pointer;
 }
-#modal-ingredients{
- width: 400px;
+#modal-recipe{
+ float: left;
+ text-align: center;
 }
 #modal-image{
   float: left;
+}
+#modal-ingredients-title{
+  font-weight: bolder;
+  text-align: center;
+}
+#modal-directions-title{
+  font-weight: bolder;
+  text-align: center;
+}
+#modal-ingredients{
+ margin-top: 10px;
 }
 
 .nav-link{
@@ -138,7 +151,7 @@
   bottom: 0;
   width: 100%;
   height: 8%;
-  background-color: #ffcb05;
+  background-color: #f0ead2;
 
 }
 #footerLogo{
@@ -246,4 +259,50 @@ html{
 }
 .favoritesFooter{
   height: 85px;
+}
+.about-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.about-card{
+  margin-top: 40px;
+  width: 22rem;
+  text-align: center;
+
+}
+.about-title{
+  margin-top: 15px;
+  line-height: 12px;
+}
+.about-text{
+  font-size: 16px;
+  margin-top: 7px;
+  
+}
+#about-image{
+  margin-top: 8px;
+  width: 15rem;
+  
+}
+.about-header{
+  text-align: center;
+  font-weight: bold;
+  background-color: #6c584c;
+}
+#david-image{
+  margin-top: 8px;
+  width: 15rem;
+}
+#bryce-image{
+  margin-top: 8px;
+  width: 15rem;
+  
+}
+body{
+  margin-bottom: 8%;
+}
+
+.about-card{
+  background-color: #adc178;
 }
