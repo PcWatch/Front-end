@@ -1,13 +1,13 @@
 import React from 'react';
-import Placeholder from 'react-bootstrap/Placeholder'
 
 export default class Footer extends React.Component {
   render(){
     return (
       <>
-        <Placeholder xs={12} bg="dark" />
-          <p>APP NAME (WIP)&trade;</p>
-        <Placeholder xs={12} bg="dark" />
+      <div className='footer'>
+          <p id='footerLogo'>TRIO&trade;</p>
+          <p id='footerCreator'>Created by Anthony Morton, Bryce Pfingston, David Hecker</p>
+      </div>
       </>
     );
   }

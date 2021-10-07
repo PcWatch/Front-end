@@ -7,7 +7,9 @@ import Main from "./components/Main";
 import Login from "./components/Login";
 import Favorites from "./components/Favorites";
 import Navigation from "./components/Navigation";
-import Footer from "./components/Footer.js";
+import Footer from "./components/Footer";
+import Shopping from "./components/Shopping"
+import About from "./components/About"
 
 class App extends React.Component {
   constructor(props) {
@@ -20,7 +22,15 @@ class App extends React.Component {
       fullRecipe: [],
       recipeId: null,
       selectedRecipe: [],
+      favoritesData: [],
+      user: null,
     };
+  }
+
+  getUser = () => {
+    this.setState({
+      user: this.props.auth0.user.email
+    })
   }
 
   getRecipeId = (selectedRecipeId) => {
@@ -49,6 +59,7 @@ class App extends React.Component {
     this.setState({
       recipe: recipeResponse.data,
     });
+    
   };
 
   getfullRecipes = async (id) => {
@@ -68,30 +79,32 @@ class App extends React.Component {
 
   saveFavoriteToDB = async (id) => {
     // this takes a recipe ID and user email and saves the full recipe to the DB
-    const postURL = `${process.env.REACT_APP_SERVER}/favorite/${id}?email=${this.props.auth0.user.email}`;
+    const postURL = `${process.env.REACT_APP_SERVER}/favorite/${id}?email=${this.state.user}`;
     await axios.post(postURL);
     console.log("item saved to favorites");
   };
 
   getFavoritesFromDB = async () => {
     // this returns fav items from the DB, can add optional search query by using query 'title'
-    const getURL = `${process.env.REACT_APP_SERVER}/favorite`;
+    const getURL = `${process.env.REACT_APP_SERVER}/favorite?email=${this.state.user}`;
     const response = await axios.get(getURL);
     const favoritesData = response.data;
     this.setState({
       favoritesData,
     });
-    console.log("got items from favorites");
   };
 
   deleteFavoriteFromDB = async (id) => {
     // this deletes a fav from the DB by id
-    const deleteURL = `${process.env.REACT_APP_SERVER}/recipe/${id}`;
+    const deleteURL = `${process.env.REACT_APP_SERVER}/recipe/${id}?email=${this.state.user}`;
+    console.log('delete URL is ', deleteURL);
     await axios.delete(deleteURL);
     console.log("item with ID: ", id, " was deleted");
+    this.getFavoritesFromDB();
   };
 
   render() {
+    
     return (
       <>
         <Router>
@@ -112,6 +125,9 @@ class App extends React.Component {
                     getRecipeId={this.getRecipeId}
                     getfullRecipes={this.getfullRecipes}
                     saveFavoriteToDB={this.saveFavoriteToDB}
+                    deleteFavoriteFromDB={this.deleteFavoriteFromDB}
+                    getFavoritesFromDB={this.getFavoritesFromDB}
+                    favoritesData={this.state.favoritesData}
                   />
                 </>
               ) : (
@@ -121,6 +137,14 @@ class App extends React.Component {
             <Route path="/Favorites">
             <Navigation />
               <Favorites getFavoritesFromDB={this.getFavoritesFromDB} deleteFavoriteFromDB={this.deleteFavoriteFromDB} saveFavoriteToDB={this.saveFavoriteToDB} favoritesData={this.state.favoritesData}/>
+            </Route>
+            <Route path="/Shopping">
+            <Navigation />
+              <Shopping />
+            </Route>
+            <Route path="/About">
+            <Navigation />
+              <About />
             </Route>
           </Switch>
         </Router>
