@@ -1,19 +1,20 @@
 import React from "react";
-import "./Nav.css";
 import Logout from "./Logout";
 import { withAuth0 } from "@auth0/auth0-react";
-import { Navbar, Nav, Form, FormControl, Button } from "react-bootstrap";
+import { Navbar, Nav, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import Container from "react-bootstrap/Container";
 import "../nav.css";
+import Logo from "../images/traylogo.png";
 
 class Navigation extends React.Component {
   render() {
     return (
       <>
-        <Navbar bg="dark" variant="dark" className="navStuff">
+        <Navbar  light style={{ backgroundColor: '#f0ead2' }} className="navStuff">
+          
           <Container>
-            <Navbar.Brand>TITLE HERE (WIP)</Navbar.Brand>
+            <img src={Logo} alt="Logo"/>
+            <Navbar.Brand ></Navbar.Brand>
             <Nav className="me-auto">
               <Nav.Link as={Link} href="/" to="/">
                 Home
@@ -34,21 +35,14 @@ class Navigation extends React.Component {
               >
                 Shopping List
               </Nav.Link>
-              <Form className="searchForm">
-                <FormControl
-                  onChange={this.searchEvent}
-                  type="text"
-                  placeholder="What food would you like to search?"
-                  className="primarySearch"
-                />
-                <Button
-                  onClick={this.props.getRecipes}
-                  className="searchButton"
-                  variant="success"
-                >
-                  Search Now!
-                </Button>
-              </Form>
+              <Nav.Link
+                as={Link}
+                href="/About"
+                to="/About"
+                onClick={() => this.forceUpdate()}
+              >
+                About Me
+              </Nav.Link>
             </Nav>
             <Logout />
           </Container>

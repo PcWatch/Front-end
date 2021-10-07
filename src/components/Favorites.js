@@ -1,52 +1,53 @@
 import { Component } from "react";
-import { Card, Container, Col, Button } from "react-bootstrap";
-// import RecipeCard from "./components/RecipeCard";
-// import RecipeModal from "./components/RecipeModal";
-// import Navigation from "./components/Navigation";
-// import Button from 'react-bootstrap/Button'
+import { Card, Col, Button } from "react-bootstrap";
 
 export default class Favorites extends Component {
 
-  componentDidMount(){
-    this.props.getFavoritesFromDB()
-    console.log('ismounting')
-    console.log(this.props.getFavoritesFromDB())
-  }
+  // componentDidMount(){
+  //   this.props.getFavoritesFromDB();
+  // }
 
   render() {
-    console.log(this.props.favoritesData)
+    this.props.getFavoritesFromDB();
     return(
-      <Container>
+      <>
+      
         {this.props.favoritesData && 
-          <Col xs={1} sm={1} md={1} lg={1}>
+          <Col className="card-column" xs={1} sm={1} md={1} lg={1}>
             {this.props.favoritesData.map( (recipeData) => <FavCard deleteFavoriteFromDB={this.props.deleteFavoriteFromDB} key={recipeData._id} recipeData={recipeData} />              
               )}
           </Col>
         }
-      </Container> 
+        <div class="favoritesFooter"></div>
+      
+      </>
     )
   }
 }
 
 class FavCard extends Component {
   render(){
-    console.log(this.props.favoritesData)
-    console.log()
+   
     return(
-              <Card key={this.props.recipeData._id} style={{ width: '69rem' }}>
-                
-                <Card.Title>{this.props.recipeData.title}</Card.Title>
-                  <div class="favoriteRecipe">
-                    <Card.Body>
-                      <Card.Img variant="top" src={this.props.recipeData.image}></Card.Img>
-                        <Card.Text>Ingredients: {this.props.recipeData.ingredients}</Card.Text>
-                        <Card.Text>Recipe: {this.props.recipeData.recipe}</Card.Text>          
-                    </Card.Body>
-                  <Button onClick={() => this.props.deleteFavoriteFromDB(this.props.recipeData._id)} className="favoriteDelete" variant="danger">69 this</Button>
-                  </div>
-              </Card>
-
+      <Card className="favoriteCard" key={this.props.recipeData._id} style={{ width: '69rem' }}>
+        <Card.Title className='favoriteCardTitle'>{this.props.recipeData.title}</Card.Title>
+          <div class="favoriteRecipe">
+            <img class="favorite-image" alt="favoriteRecipe" src={this.props.recipeData.image}/>
+            <div class="favIngredientTitle">Ingredients</div> 
+            <div class="favIngredient">{this.props.recipeData.ingredients}</div>
+            <div class="favRecipeTitle">Recipe</div>
+            <div class="favRecipe">{this.props.recipeData.recipe}</div>
+            {/* <Card.Body>
+              
+              <Card.Img className="favorite-image" variant="top" src={this.props.recipeData.image}></Card.Img>
+                <Card.Text style={{flex: 1, flexWrap: 'wrap'}} className="favorite-ingredients">Ingredients: {this.props.recipeData.ingredients}</Card.Text>
+                <Card.Text style={{flex: 1, flexWrap: 'wrap'}}className="favorite-recipe">Recipe: {this.props.recipeData.recipe}</Card.Text>          
+            </Card.Body> */}
+          <Button onClick={() => this.props.deleteFavoriteFromDB(this.props.recipeData.id)} className="favoriteDelete" variant="danger">Remove</Button>
+          </div>
+      </Card>
+      
+      
     )
   }
-
 }
